@@ -43,7 +43,7 @@ DJANGO_APPS = [
 # apps.ExampleDjangoConfig our contacts connected file
 # made division on what we add
 LOCAL_APPS = [
-    "apps.contacts.apps.ContactsConfig",
+    "apps.contact_book",
 ]
 # made division on what third party add
 THIRD_PARTY_APPS = []
