@@ -4,8 +4,8 @@
     <div>
         <h2>Contacts</h2>>
         <ol>
-            {% for contact in contacts %}
-                <li>{{Contact_book.name}} - {{Contact_book.phone}}: {{Contact_book.birthday}}</li>
+            {% for contact in contact_book %}
+                <li>{{contact.name}} - {{contact.phone}}: {{contact.birthday}}</li>
             {% endfor %}
         </ol>
     </div>>
