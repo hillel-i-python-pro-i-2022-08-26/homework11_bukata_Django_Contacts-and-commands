@@ -16,3 +16,9 @@ black==22.8.0
 # Check codestyle
 flake8==5.0.4
 # [code_style]-[END]
+
+# For environment variables and config.
+django-environ==0.9.0
+
+# For DB connection.
+psycopg2-binary==2.9.5
