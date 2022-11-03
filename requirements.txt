@@ -19,6 +19,5 @@ flake8==5.0.4
 
 # For environment variables and config.
 django-environ==0.9.0
-
 # For DB connection.
 psycopg2-binary==2.9.5
