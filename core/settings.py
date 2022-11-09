@@ -44,6 +44,7 @@ DJANGO_APPS = [
 # made division on what we add
 LOCAL_APPS = [
     "apps.contact_book",
+    "apps.users",
 ]
 # made division on what third party add
 THIRD_PARTY_APPS = []
@@ -62,6 +63,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "core.urls"
+# add our user with our model where users ( location of model ( in apps/users) and our class User (in models
+AUTH_USER_MODEL = "users.User"
 
 TEMPLATES = [
     {

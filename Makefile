@@ -36,3 +36,15 @@ migrations:
 # Migrate
 migrate:
 	@python manage.py migrate
+
+.PHONY: init-dev-i-create-superuser
+init-dev-i-create-superuser:
+	@DJANGO_SUPERUSER_PASSWORD=admin123 python manage.py createsuperuser --user admin --email admin@gmail.com --no-input
+
+# in this command : command python manage.py createsuperuser: to create user with its own pevilagies
+# then --user admin login of the user (now: admin)
+# email of user: --email admin@gmail.com
+#  --no-input: non intaractive command (not to be ask by pycharm: name of user, his email and password
+#in this case command will be implam without questions
+# admin123: password which we give to variable environment
+# @DJANGO_SUPERUSER_PASSWORD: variable environment
