@@ -1,0 +1,37 @@
+{% extends '_helpers/_base.html' %}}
+
+{% block content %}
+    <div>
+        <h2>Contacts</h2>
+            <a href="{%  url 'contact_book:create_contact'%}">
+                <button>
+                    Create contact
+                </button>
+            </a>
+        <ol>
+            {% for contact in contact_book %}
+                <li>
+                    <span>{{contact.name}} </span>
+
+                    <span> </span>
+                    <a href="{%  url 'contact_book:read_contact' pk=contact.pk %}">
+                        <button>
+                            Read
+                        </button>
+                    </a>
+                    <a href="{%  url 'contact_book:edit_contact' pk=contact.pk %}">
+                        <button>
+                            Edit
+                        </button>
+                    </a>
+                    <a href="{%  url 'contact_book:delete_contact' pk=contact.pk %}">
+                        <button>
+                            Delete
+                        </button>
+                    </a>
+
+                </li>
+            {% endfor %}
+        </ol>
+    </div>>
+{% endblock %}

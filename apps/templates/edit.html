@@ -1,0 +1,15 @@
+{% extends '_helpers/_base.html' %}
+
+{% block content %}
+    <div>
+        <h2>Edit contact</h2>
+        <form method="POST">
+            <!-- Security token by Django -->
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Update">
+        </form>
+    </div>
+{% endblock %}
+
+

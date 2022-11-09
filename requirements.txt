@@ -1,0 +1,18 @@
+# Core
+django==4.1.1
+# For fake_name function
+faker==14.2.0
+# For better parsing args from query part from URL
+webargs==8.2.0
+
+
+# [code_style]-[BEGIN]
+# Pre-commit hook.
+pre-commit==2.20.0
+# Upgrade syntax.
+pyupgrade==2.38.2
+# Formatter. Apply codestyle.
+black==22.8.0
+# Check codestyle
+flake8==5.0.4
+# [code_style]-[END]
