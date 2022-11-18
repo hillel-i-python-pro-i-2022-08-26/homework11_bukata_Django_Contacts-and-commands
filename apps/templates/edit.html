@@ -1,12 +1,14 @@
 {% extends '_helpers/_base.html' %}
 
+{% load crispy_forms_tags %}
+
 {% block content %}
     <div>
         <h2>Edit contact</h2>
         <form method="POST">
             <!-- Security token by Django -->
             {% csrf_token %}
-            {{ form.as_p }}
+            {{ form.as_p|as_crispy_field  }}
             <input type="submit" value="Update">
         </form>
     </div>
