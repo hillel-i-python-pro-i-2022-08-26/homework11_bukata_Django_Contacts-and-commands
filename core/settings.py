@@ -18,7 +18,7 @@ import environ
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 # add path to apps folder)
-APPS_DIR = BASE_DIR.joinpath("apps")
+APPS_DIR: Path = BASE_DIR.joinpath("apps")
 
 # initialize for environment's variables their reading
 env = environ.Env()
@@ -63,11 +63,19 @@ LOCAL_APPS = [
     "apps.contact_book",
     "apps.users",
 ]
+
+
 # made division on what third party add
-THIRD_PARTY_APPS = []
+THIRD_PARTY_APPS = [
+    "crispy_forms",
+    "crispy_bootstrap5",
+]
 
 # general combination of all apps (made by us)
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -151,8 +159,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
+# for premade settings
 STATIC_URL = "static/"
 
+# our static css files
+STATICFILES_DIRS = [
+    APPS_DIR / "static",
+]
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
