@@ -13,4 +13,5 @@ class ContactForm(forms.ModelForm):
         # fields = "__all__"
 
         # to see one spesific field or couple for exmp
-        fields = ("name", "phone", "birthday")
+
+        fields = ("name", "phone", "birthday", "avatar")
