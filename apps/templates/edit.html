@@ -8,7 +8,7 @@
         <form method="POST">
             <!-- Security token by Django -->
             {% csrf_token %}
-            {{ form.as_p|as_crispy_field  }}
+            {{ form.as_p }}
             <input type="submit" value="Update">
         </form>
     </div>
