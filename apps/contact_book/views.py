@@ -30,14 +30,14 @@ def detail_view(request: HttpRequest, pk) -> HttpResponse:
 
 
 def edit_contact(request: HttpRequest, pk) -> HttpResponse:
-    context = {}
     obj = get_object_or_404(Contact_book, pk=pk)
-    form = ContactForm(request.POST, instance=obj)
-    #   if request.method == "POST":
-    #      form = ContactForm(request.POST)
-    if form.is_valid():
-        form.save()
-    context["form"] = form
+
+    if request.method == "POST":
+        form = ContactForm(request.POST, request.FILES, instance=obj)
+        if form.is_valid():
+            form.save()
+    form = ContactForm(instance=obj)
+    context = {"form": form}
     return render(request, "edit.html", context)
 
 
