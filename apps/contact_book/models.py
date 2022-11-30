@@ -7,7 +7,7 @@ from django.db import models
 # function creation for download the files
 # here we put our object and the name of the file ( which will be download) , and as response will be our path to the file
 def get_icon_path(instance, filename) -> str:
-    return
+    return f"contacts/avatars/{filename}"
 
 
 class Contact_book(models.Model):
