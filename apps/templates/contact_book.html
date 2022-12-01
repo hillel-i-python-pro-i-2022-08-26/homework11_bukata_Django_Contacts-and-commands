@@ -10,26 +10,29 @@
             </a>
         <ol>
             {% for contact in contact_book %}
-                <li>
-                    <span>{{contact.name}} </span>
+                <li class="my-element">
+                    <div class="row">
+                        <div class="col">
+                            <span>{{contact.name}} </span>
 
-                    <span> </span>
-                    <a href="{%  url 'contact_book:read_contact' pk=contact.pk %}">
-                        <button>
-                            Read
-                        </button>
-                    </a>
-                    <a href="{%  url 'contact_book:edit_contact' pk=contact.pk %}">
-                        <button>
-                            Edit
-                        </button>
-                    </a>
-                    <a href="{%  url 'contact_book:delete_contact' pk=contact.pk %}">
-                        <button>
-                            Delete
-                        </button>
-                    </a>
-
+                            <span> </span>
+                            <a href="{%  url 'contact_book:read_contact' pk=contact.pk %}">
+                                <button class="btn btn-success">
+                                    Read
+                                </button>
+                            </a>
+                            <a href="{%  url 'contact_book:edit_contact' pk=contact.pk %}">
+                                <button class="btn btn-warning">
+                                    Edit
+                                </button>
+                            </a>
+                            <a href="{%  url 'contact_book:delete_contact' pk=contact.pk %}">
+                                <button class="btn btn-danger">
+                                    Delete
+                                </button>
+                            </a>
+                        </div>
+                    </div>
                 </li>
             {% endfor %}
         </ol>

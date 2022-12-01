@@ -16,4 +16,5 @@ urlpatterns = [
     path("<int:pk>/delete", views.delete_contact, name="delete_contact"),
     path("<int:pk>/read", views.read_contact, name="read_contact"),
     path("create/", views.create_contact, name="create_contact"),
+    #   path("<int:pk>", views.ContactUpdateView.as_view(), name="edit"),
 ]
