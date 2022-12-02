@@ -1,4 +1,7 @@
+import uuid
+
 from django.db import models
+
 
 # from django.urls import reverse
 
@@ -6,8 +9,9 @@ from django.db import models
 
 # function creation for download the files
 # here we put our object and the name of the file ( which will be download) , and as response will be our path to the file
-def get_icon_path(instance, filename) -> str:
-    return f"contacts/avatars/{filename}"
+def get_icon_path(instance, filename: str) -> str:
+    _, extension = filename.rsplit(".", maxsplit=1)
+    return f"contacts/avatars/{instance.pk}/{uuid.uuid4()}/avatar.{extension}"
 
 
 class Contact_book(models.Model):
