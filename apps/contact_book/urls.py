@@ -11,7 +11,8 @@ app_name = "contact_book"
 # name= will be use in _header
 urlpatterns = [
     # get_contacts : name of our view
-    path("", views.get_contact_book, name="contact_book"),
+    #    path("", views.get_contact_book, name="contact_book"),
+    path("", views.ArticleListView.as_view(), name="contact_book"),
     path("", views.create_contact, name="create_contact"),
     path("<int:pk>/edit", login_required(views.edit_contact), name="edit_contact"),
     path(

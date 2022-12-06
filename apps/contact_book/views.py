@@ -1,5 +1,6 @@
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import get_object_or_404, render
+from django.views.generic import ListView
 
 from .forms import ContactForm
 from .models import Contact_book
@@ -10,7 +11,7 @@ def get_contact_book(request: HttpRequest) -> HttpResponse:
     contact_book = Contact_book.objects.all()
     return render(
         request,
-        "contact_book.html",
+        "contact_book/contact_book_list.html",
         {
             # contacts in general will be refering
             # to generator fuc , but here to contacts in this fun upper (with objects)
@@ -27,6 +28,10 @@ def detail_view(request: HttpRequest, pk) -> HttpResponse:
     context = {"data": Contact_book.objects.get(pk=pk)}
     # add the dictionary during initialization
     return render(request, "update_view.html", context)
+
+
+class ArticleListView(ListView):
+    model = Contact_book
 
 
 def edit_contact(request: HttpRequest, pk) -> HttpResponse:
