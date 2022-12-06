@@ -9,7 +9,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./db:/wd/db:rw
+      - ./media:/wd/media:rw
     user: "1000"
     environment:
       - POSTGRES_HOST=postgres
