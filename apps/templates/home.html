@@ -1,5 +1,6 @@
 {% extends '_helpers/_base.html' %}
 
+
 {% block title %}Home{% endblock %}
 
 {% block content %}
@@ -9,5 +10,14 @@
 {% else %}
   <p>You are not logged in</p>
   <a href="{% url 'login' %}">Log In</a>
+        <div>
+        <h2>Registration</h2>
+        <form method="POST" enctype="multipart/form-data">
+            <!-- Security token by Django -->
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Update">
+        </form>
+    </div>
 {% endif %}
 {% endblock %}

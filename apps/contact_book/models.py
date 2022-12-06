@@ -38,3 +38,27 @@ class Contact_book(models.Model):
         return f"{self.name} - {self.phone} - {self.birthday}"
 
     __repr__ = __str__
+
+
+class CustomUser(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=254)
+    birthday = models.DateField()
+    password = models.CharField(max_length=100)
+
+    avatar = models.ImageField(
+        # here we can add name for admin with syntax of internationalisations: "Avatar" for ex
+        # length of the path to file
+        max_length=265,
+        # default value empty like not all will have there avatar
+        blank=True,
+        null=True,
+        # path where all should be downloaded via function( generated on id of syshnost)
+        upload_to=get_icon_path,
+    )
+    #   def get_absolute_url(self):
+    #      return reverse("contact_book:edit", kwargs={"pk": self.pk})
+    def __str__(self) -> str:
+        return f"{self.name} - {self.email}"
+
+    __repr__ = __str__

@@ -1,6 +1,12 @@
 {% extends '_helpers/_base.html' %}}
 
 {% block content %}
+    {% if user.is_authenticated %}
+    User:{{ user.username }} is here!
+    {% endif %}
+    <div>
+        ______________________________
+    </div>
     <div>
         <h2>{{ title}}</h2>
     <p>
