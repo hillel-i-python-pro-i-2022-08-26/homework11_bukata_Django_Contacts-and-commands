@@ -2,8 +2,8 @@ from django.http import HttpRequest, HttpResponse
 from django.shortcuts import get_object_or_404, render
 from django.views.generic import ListView
 
-from .forms import ContactForm
-from .models import Contact_book
+from .forms import ContactForm, CustomUserForm
+from .models import Contact_book, CustomUser
 
 
 def get_contact_book(request: HttpRequest) -> HttpResponse:
@@ -19,6 +19,19 @@ def get_contact_book(request: HttpRequest) -> HttpResponse:
             "title": "Contact_book",
         },
     )
+
+
+def get_custom_user(request: HttpRequest, pk) -> HttpResponse:
+    # here we get all objects , this func could be set
+    obj = get_object_or_404(CustomUser, pk=pk)
+
+    if request.method == "POST":
+        form = CustomUserForm(request.POST, request.FILES, instance=obj)
+        if form.is_valid():
+            form.save()
+    form = CustomUserForm(instance=obj)
+    context = {"form": form}
+    return render(request, "home.html", context)
 
 
 # after updating it will redirect to detail_View

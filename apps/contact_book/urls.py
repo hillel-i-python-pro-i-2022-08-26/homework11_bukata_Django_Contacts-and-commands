@@ -13,6 +13,7 @@ urlpatterns = [
     # get_contacts : name of our view
     #    path("", views.get_contact_book, name="contact_book"),
     path("", views.ArticleListView.as_view(), name="contact_book"),
+    path("home/", views.get_custom_user, name="registration"),
     path("", views.create_contact, name="create_contact"),
     path("<int:pk>/edit", login_required(views.edit_contact), name="edit_contact"),
     path(
