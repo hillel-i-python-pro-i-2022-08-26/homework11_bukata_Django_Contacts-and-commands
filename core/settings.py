@@ -62,6 +62,7 @@ DJANGO_APPS = [
 LOCAL_APPS = [
     "apps.contact_book",
     "apps.users",
+    "apps.middleware",
 ]
 
 
@@ -85,6 +86,11 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    # to connect our middleware: apps middleware> than py file, then our class
+    "apps.middleware.middleware.SimpleLoggingMiddleware",
+    # new class of middleware
+    "apps.middleware.middleware.SimpleLoggingMiddleware2",
+    "apps.middleware.middleware.RequestInfoMiddleware",
 ]
 
 ROOT_URLCONF = "core.urls"
