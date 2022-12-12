@@ -1,9 +1,16 @@
 from django.http import HttpRequest, HttpResponse
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.views.generic import ListView
 
-from .forms import ContactForm, CustomUserForm
+# imported customised for for user registration CreateUserForm
+from .forms import ContactForm, CreateUserForm
 from .models import Contact_book, CustomUser
+
+# imported preintalled django form for user registration
+from django.contrib.auth.forms import UserCreationForm
+
+# import preinstalled flash messages ( like errors or sucsess log in which we use in home.html
+from django.contrib import messages
 
 
 def get_contact_book(request: HttpRequest) -> HttpResponse:
@@ -21,17 +28,38 @@ def get_contact_book(request: HttpRequest) -> HttpResponse:
     )
 
 
-def get_custom_user(request: HttpRequest, pk) -> HttpResponse:
-    # here we get all objects , this func could be set
+def registrationPage(request: HttpRequest, pk) -> HttpResponse:
     obj = get_object_or_404(CustomUser, pk=pk)
+    # imported preinstaled django form
+    #    form = CreateUserForm()
 
+    # this block to save created user
     if request.method == "POST":
-        form = CustomUserForm(request.POST, request.FILES, instance=obj)
+        form = CreateUserForm(request.POST, request.FILES, instance=obj)
+        #     form = CreateUserForm(request.POST)
+        # here we validate the form
         if form.is_valid():
             form.save()
-    form = CustomUserForm(instance=obj)
+            # add user cleaned data for flash message
+            user = form.cleaned_data("username")
+            # add flash message for user with our message
+            messages.success((request, "Account was created for " + user))
+            return redirect("contact_book")
+    form = CreateUserForm(instance=obj)
     context = {"form": form}
     return render(request, "home.html", context)
+
+
+# here we pass our template
+# context = {'form':form}
+# return render(request, "home.html", context)
+
+#  if request.method == "POST":
+#     form = CustomUserForm(request.POST, request.FILES, instance=obj)
+#    if form.is_valid():
+#       form.save()
+# form = CustomUserForm(instance=obj)
+#  context = {"form": form}
 
 
 # after updating it will redirect to detail_View

@@ -12,12 +12,15 @@
   <a href="{% url 'login' %}">Log In</a>
         <div>
         <h2>Registration</h2>
+
         <form method="POST" enctype="multipart/form-data">
             <!-- Security token by Django -->
             {% csrf_token %}
             {{ form.as_p }}
-            <input type="submit" value="Update">
+            <input type="submit" value="Create User">
         </form>
     </div>
+    {{ form.errors }}
+
 {% endif %}
 {% endblock %}
