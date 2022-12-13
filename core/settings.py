@@ -87,9 +87,9 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     # to connect our middleware: apps middleware> than py file, then our class
-    "apps.middleware.middleware.SimpleLoggingMiddleware",
+    # "apps.middleware.middleware.SimpleLoggingMiddleware",
     # new class of middleware
-    "apps.middleware.middleware.SimpleLoggingMiddleware2",
+    # "apps.middleware.middleware.SimpleLoggingMiddleware2",
     "apps.middleware.middleware.RequestInfoMiddleware",
 ]
 
