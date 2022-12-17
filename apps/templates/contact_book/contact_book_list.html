@@ -9,10 +9,13 @@
                 </button>
             </a>
         <ol>
-            {% for contact in contact_book %}
+            {% for contact in object_list %}
                 <li class="my-element">
                     <div class="row">
                         <div class="col">
+                            {% if contact.avatar %}
+                                <img class="contact-avatar" src="{{ contact.avatar.url }}" alt="{{ contact.name }}"/>
+                            {% endif %}
                             <span>{{contact.name}} </span>
 
                             <span> </span>
